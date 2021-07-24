@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  div.posts
+    h1.content-subhead PostagemFixa
+    section.post
+      header.post-header
+        img.post-avatar(width="48", height="48", src='images/anliben.jpg', alt="Anliben Yayoi")
+        h2.post-title Aqui você pode publicar
+        p.post-meta By 
+          a.post-author(href="#") Anliben Yayoi tags 
+            a.post-category.post-category-design(href="#") Informacao
+              a.post-category.post-category-pure(href="#") Nova Terra Tem
+      div.post-description
+        p Aqui você pode publicar, vender , ler, e se informar sobre tudo que temos de melhor nosso facebook Certifique-se de postar algo relevante, proibido pornografia, gore, ou pedofilia. | Podem postar, comentar e até mesmo comprar
+  each p in poster
+    section.post
+      header.post-header
+        each img in p.images
+          img.post-avatar(width="48", height="48", alt="#{p.titulo}", src="images/#{img}")
+        a(href='/post/#{p.id}')
+          h2.post-title= p.titulo 
+        p.post-meta By 
+        a.post-author(href="#")=  p.nome 
+        each tag in p.tags
+          a.post-category.post-category-yui(href="#")=  tag
+      div.post-description
+        p=  p.body
+        a(href="#{p.links}") interagir

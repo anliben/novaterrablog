@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    form(action='/create',enctype='multipart/form-data', method='post').pure-form.pure-form-aligned
+        span.pure-form-message-inline todos os campos são obrigatórios
+        div.pure-control-group
+            input#aligned-nome(type="text", placeholder="seu nome",name='nome', required=true)
+        div.pure-control-group
+            input#aligned-sobrenome(type="text", name='sobrenome',placeholder="Coloque seu sobrenome", required=true)
+        div.pure-control-group
+            input#aligned-email(type="email",name='email', placeholder="Coloque seu Email", required=true)
+        div.pure-control-group
+            input#aligned-titulo(type="text",name='titulo', placeholder="Titulo da postagem...", required=true)
+        div.pure-control-group
+            input#aligned-links(name='links', placeholder='Coloque links aqui', required=true)
+        div.pure-control-group
+            input#aligned-links(name='file',type='file',multiple="multiple", required=true)
+        div.pure-control-group
+            textarea#form(row=30,name='body', required=true)
+            label(for="form") Digite toda sua postagem
+        div.pure-controls
+            button.pure-button.pure-button-primary(type="submit") Postar Agora

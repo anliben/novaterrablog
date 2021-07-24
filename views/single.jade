@@ -1,0 +1,47 @@
+extends layout
+block head
+  title= content.titulo
+  meta(charset='UTF-8')
+  link(rel='stylesheet', href='/stylesheets/style.css')
+  meta(name="viewport", content="width=device-width, initial-scale=1.0")
+  link(rel="stylesheet", href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous")
+  link(href="../images/#{fav}", rel="shortcut icon", type="image/x-icon")
+  link(href="../images/#{fav}", rel="apple-touch-icon")
+  meta(name='description' content='#{content.body}')
+  meta(name='author' content='#{content.nome}')
+  meta(name='keywords' content='#{content.tags}')
+  meta(property="og:title" content="#{content.titulo}")
+  meta(property="og:description" content="#{content.body}")
+  meta(property="og:image" content="../images/#{fav}")
+  meta(property="og:image:type" content="image/jpeg")
+  meta(property="og:image:width" content="800")
+  meta(property="og:image:height" content="600")
+  meta(property="og:url" content="http://blognovaterra.eu-4.evennode.com/post/#{content.id}")
+  meta(property="og:type" content="article")
+  meta(property="article:author" content="Anliben")
+  meta(property="article:section" content="post")
+  meta(property="article:tag" content="#{tag}")
+  meta(property="article:published_time" content="#{content.date}")
+  meta(name="serp-content-type" content="product")
+  meta(name="short-title" content="Blog Nova Terra")
+  link(rel="canonical" href="http://blognovaterra.eu-4.evennode.com/")
+  link(rel="shortlink" href="http://blognovaterra.eu-4.evennode.com/")
+block content
+    h1.content-subhead content.date
+    section.post
+      header.post-header
+        h2.post-title= content.titulo
+        p.post-meta By 
+          a.post-author(href="#")= content.nome
+            each t in content.tags
+              a.post-category.post-category-design(href="#")= t
+      div.post-description
+        div.post-images.pure-g
+          each image in content.images
+            .div.pure-u-1.pure-u-md-1-2
+              a(href="#") 
+                img.pure-img-responsive(src="../images/#{image}",alt="#{content.titulo}")
+              div.post-image-meta
+                h3 responsive fotos
+        p=  content.body 
+        a#ancora-center(href='#{content.links}') Interagir
